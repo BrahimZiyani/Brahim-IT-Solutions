@@ -60,3 +60,57 @@ Tout le laboratoire tourne sur **un seul PC personnel**.
 # 🏢 Architecture simulée
 
 Le laboratoire reproduit une petite infrastructure d'entreprise.
+
+
+# Journal de bord – Brahim IT Lab 🧪💻
+
+## 06/03/2026 🚀
+
+Aujourd'hui, on a rencontré nos **premiers défis Git** ! 💡  
+
+### Problème 1 : Authentification avec GitHub 🔑
+
+En voulant pousser mon fichier `JOURNAL.md` :
+
+git push origin main
+
+Git m’a répondu :
+
+remote: Invalid username or token
+fatal: Authentication failed
+
+➡️ Cause : GitHub n’accepte plus les mots de passe classiques. Mon token (PAT) initial avait été exposé et a été révoqué.
+
+Solution :
+
+Supprimer le token compromis sur GitHub
+
+Générer un nouveau Personal Access Token avec la permission repo ✅
+
+Configurer le remote proprement, sans inclure le token dans l’URL :
+
+git remote set-url origin https://github.com/BrahimZiyani/Brahim-IT-Solutions.git
+
+Utiliser le token comme mot de passe lors du push
+
+Résultat : push réussi ! 🎉
+
+### Problème 2 : Branches divergentes 🔄
+
+Push rejeté : non-fast-forward.
+Cause : le dépôt distant contenait déjà un commit (README initial).
+
+Solution :
+
+git pull --rebase origin main
+
+Résoudre les éventuels conflits (ici aucun)
+
+git push origin main
+✅ Historique propre et synchronisé
+
+Apprentissages du jour :
+
+Sécuriser les tokens 🔐
+
+--rebase garde un historique linéaire 📈
